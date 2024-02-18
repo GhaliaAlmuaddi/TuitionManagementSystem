@@ -33,7 +33,8 @@ final class TutorModel: Model,Content{
     init() { }
 
 
-    init(id: UUID? = nil, name: String) {
+    init(id : UUID , name : String , skils : String , experience : String){
+       
            self.id = id
            self.name = name
            self.skils = name
