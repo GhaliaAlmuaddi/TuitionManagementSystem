@@ -17,12 +17,16 @@ public func configure(_ app: Application) async throws {
 //    try routes(app)
 //    app.migrations.add(MyMigration())
     
-    
-    
+       
     // register routes
     try app.register(collection: Enrolment())
     try app.register(collection: Learner())
+    
+    // TUTOR
     try app.register(collection: Tutor())
+    try routes(app)
+    app.migrations.add(TutorMigration())
+    
     try app.register(collection: Workshop())
     try routes(app)
 }
