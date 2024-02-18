@@ -8,10 +8,10 @@ public func configure(_ app: Application) async throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     
-//    app.databases.use(.postgres(configuration:
-//         SQLPostgresConfiguration(hostname: "localhost", username: "postgres", password: "",
-//                                  database: "plantsdb" ,
-//                                  tls: .prefer(try .init(configuration: .clientDefault)))) , as : .psql)
+    app.databases.use(.postgres(configuration:
+         SQLPostgresConfiguration(hostname: "localhost", username: "postgres", password: "",
+                                  database: "tuitiondb" ,
+                                  tls: .prefer(try .init(configuration: .clientDefault)))) , as : .psql)
 //                        
 //    try app.register(collection: file())
 //    try routes(app)
@@ -21,12 +21,13 @@ public func configure(_ app: Application) async throws {
     // register routes
     try app.register(collection: Enrolment())
     try app.register(collection: Learner())
+    try routes(app)
+    
     
     // TUTOR
     try app.register(collection: Tutor())
-    try routes(app)
     app.migrations.add(TutorMigration())
     
     try app.register(collection: Workshop())
-    try routes(app)
+    app.migrations.add(WorkshopMigration())
 }

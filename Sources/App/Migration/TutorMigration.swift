@@ -15,10 +15,10 @@ import FluentPostgresDriver
 struct TutorMigration: Migration {
 
     func prepare(on database: Database) -> EventLoopFuture<Void> {
-        database.schema("plantsdb").id().field("name", .string).create()
+        database.schema("Tutors").id().field("name", .string).create()
     }
     
     func revert(on database: Database)  -> EventLoopFuture<Void> {
-        database.schema("plantsdb").delete()
+        database.schema("Tutors").delete()
     }
 }
