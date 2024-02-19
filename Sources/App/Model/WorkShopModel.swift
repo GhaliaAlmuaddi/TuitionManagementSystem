@@ -33,28 +33,27 @@ final class WorkShopModel: Model,Content {
     @Field(key: "type")
        var type : String
     
-//    @Field(key: "tutor_id")
-//    var tutor_id : TutorModel.IDValue
-//    
+    
+    @Parent(key: "tutor_id")
+    var tutor : TutorModel
+//
 //    @Field (key: "Tutor_id")
 //    var Tutor_id : TutorModel
     
     
-    @Field(key: "tutor_id")
-        var tutor_id: UUID?
-    
-    
+//    @Field(key: "tutor_id")
+//        var tutor_id: UUID?
     init() { }
     
   
-    init(id : UUID , name : String , date : Date , location : String , type : String , tutor_id :  UUID ) {
+    init(id : UUID , name : String , date : Date , location : String , type : String , tutor_id :  TutorModel.IDValue ) {
         
         self.id = id
         self.name = name
         self.date = date
         self.location = location
         self.type = type
-        self.tutor_id = tutor_id
+        self.$tutor.id = tutor_id
          
     }
 }

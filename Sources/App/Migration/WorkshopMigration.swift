@@ -19,8 +19,9 @@ struct WorkshopMigration: Migration {
             .field("date", .date)
             .field("location", .string)
             .field("type", .string)
-            .field("tutor_id", .uuid).create()
-        
+            .field("tutor_id", .uuid ,.required ,.references("TutorsT", "id")).create()
+           
+        //.references("users", "id"))
     }
     
     func revert(on database: Database)  -> EventLoopFuture<Void> {

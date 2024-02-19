@@ -30,6 +30,11 @@ final class TutorModel: Model,Content{
     @Field(key: "experience")
        var experience: String
     
+    
+    @Children(for: \.$tutor)
+    var workshop: [WorkShopModel]
+    
+    
     init() { }
 
 
