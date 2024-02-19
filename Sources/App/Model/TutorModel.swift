@@ -14,7 +14,7 @@ import FluentPostgresDriver
 final class TutorModel: Model,Content{
   
   
-    static let schema = "Tutors"
+    static let schema = "TutorsT"
 
       
     @ID(key: .id)

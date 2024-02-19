@@ -26,7 +26,7 @@ public func configure(_ app: Application) async throws {
     
     // TUTOR
     try app.register(collection: Tutor())
-    app.migrations.add(TutorMigration())
+    app.migrations.add(TutorMigrationT())
     
     try app.register(collection: Workshop())
     app.migrations.add(WorkshopMigration())
