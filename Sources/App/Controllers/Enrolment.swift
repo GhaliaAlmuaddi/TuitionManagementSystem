@@ -12,9 +12,13 @@ import Vapor
 struct Enrolment : RouteCollection {
     func boot(routes: Vapor.RoutesBuilder) throws {
         let Enrolment = routes.grouped("Enrolment")
+        
+        //Get All workshops
         Enrolment.get(use : index)
         
+        //Create All workshops
         Enrolment.post(use : create)
+        
         
         Enrolment.put(":id" , use : update)
         
