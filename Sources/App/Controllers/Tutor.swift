@@ -15,9 +15,9 @@ struct Tutor : RouteCollection {
         Tutor.get(use : index)
         
         Tutor.post(use : create)
-        
+
         Tutor.put(":id" , use : update)
-        
+
         Tutor.delete(":id" , use : delete)
         
         Tutor.get(":id" , use : getTutorByID)
@@ -63,5 +63,6 @@ struct Tutor : RouteCollection {
         
       return TutorByID   
     }
+    
     
 }
