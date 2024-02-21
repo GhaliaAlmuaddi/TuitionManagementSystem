@@ -23,26 +23,45 @@ struct Tutor : RouteCollection {
         Tutor.get(":id" , use : getTutorByID)
     }
     
-    func index (req : Request) async throws -> String {
-        return "Get all Tutors"
+    func index (req : Request) async throws -> [TutorModel]  {
+        let Tutor = try await TutorModel.query(on: req.db).all()
+        return Tutor
     }
     
     func create (req : Request) async throws -> String {
         return "create all Tutors"
     }
     
-    func update (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "update with \(id)"
+        func update (req : Request) async throws -> TutorModel {
+      
+        guard let TutorUsingId = try await TutorModel.find(req.parameters.get("id"), on: req.db) else { throw Abort(.notFound)}
+        
+        let UpdatedElements = try  req.content.decode(TutorModel.self)
+        
+        TutorUsingId.name = UpdatedElements.name
+        
+        TutorUsingId.skils = UpdatedElements.skils
+        
+        TutorUsingId.experience = UpdatedElements.experience
+        
+        //Return it after updated
+        return TutorUsingId
     }
     
-    func delete (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "delete with \(id)"
+    func delete (req : Request) async throws -> TutorModel {
+        
+        guard let TutorById = try await TutorModel.find(req.parameters.get("id"), on: req.db) else { throw Abort(.notFound)}
+            
+        try await TutorById.delete(on: req.db)
+        
+       return TutorById
     }
     
-    func getTutorByID (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "Get Tutor with ID \(id)"
+    func getTutorByID (req : Request) async throws -> TutorModel {
+      
+        guard let TutorByID = try await TutorModel.find(req.parameters.get("id"), on : req.db) else { throw Abort(.notFound)}
+        
+      return TutorByID   
     }
+    
 }
