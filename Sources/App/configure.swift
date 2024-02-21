@@ -16,9 +16,8 @@ public func configure(_ app: Application) async throws {
 //    try app.register(collection: file())
 //    try routes(app)
 //    app.migrations.add(MyMigration())
-    
-       
-    // register routes
+//    register routes
+
     try app.register(collection: Enrolment())
     try app.register(collection: Learner())
     try routes(app)

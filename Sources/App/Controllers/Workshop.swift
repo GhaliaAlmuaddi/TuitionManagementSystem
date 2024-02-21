@@ -36,37 +36,35 @@ struct Workshop : RouteCollection {
         return Workshops
     }
     
-    func create (req : Request) async throws -> String {
+    
+    func create (req : Request) async throws -> WorkShopModel {
         
-        
-        
-        return "create all Workshop"
+        let NewWorkShop = try req.content.decode(WorkShopModel.self)
+               try await NewWorkShop.save(on: req.db)
+        return NewWorkShop
+ 
     }
     
+    
     func update (req : Request) async throws -> WorkShopModel {
-        // let id = req.parameters.get("id")!
-        //        return "update with \(id)"
+//         let id = req.parameters.get("id")!
+//                return "update with \(id)"
         
         guard let WorkshopUsingId = try await WorkShopModel.find(req.parameters.get("id"), on: req.db) else { throw Abort(.notFound)}
         
-        let UpdatedElements = try  req.content.decode(WorkShopModel.self)
+        let UpdatedInput = try  req.content.decode(WorkShopModel.self)
         
-        WorkshopUsingId.name = UpdatedElements.name
-        WorkshopUsingId.location = UpdatedElements.location
+      //  WorkshopUsingId.name = UpdatedInput.name
+      //  WorkshopUsingId.location = UpdatedInput.location
+      //  WorkshopUsingId.type = UpdatedInput.type
         
-        WorkshopUsingId.type = UpdatedElements.type
+        WorkshopUsingId.date = UpdatedInput.date
         
-        
-        WorkshopUsingId.date = UpdatedElements.date
-        
-        WorkshopUsingId.tutor = UpdatedElements.tutor
-        
-        
-        //Return it after updated
+     //  WorkshopUsingId.tutor = UpdatedInput.tutor
+
+     //  Return it after updated
         return WorkshopUsingId
-    }
-        
-    }
+    }}
     
     func delete (req : Request) async throws -> WorkShopModel {
 //        let id = req.parameters.get("id")!
@@ -79,9 +77,7 @@ struct Workshop : RouteCollection {
        return WorkshopById
         }
         
-        
-    
-    
+
     func getWorkshopByID (req : Request) async throws -> WorkShopModel {
 //        let id = req.parameters.get("id")!
 //        return "Get Workshop with ID \(id)"
