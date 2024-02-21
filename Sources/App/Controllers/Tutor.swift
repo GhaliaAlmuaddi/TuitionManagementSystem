@@ -28,8 +28,11 @@ struct Tutor : RouteCollection {
         return Tutor
     }
     
-    func create (req : Request) async throws -> String {
-        return "create all Tutors"
+    func create (req : Request) async throws -> TutorModel {
+   
+        let NewTutor = try req.content.decode(TutorModel.self)
+               try await NewTutor.save(on: req.db)
+        return NewTutor
     }
     
         func update (req : Request) async throws -> TutorModel {
@@ -38,13 +41,10 @@ struct Tutor : RouteCollection {
         
         let UpdatedElements = try  req.content.decode(TutorModel.self)
         
-        TutorUsingId.name = UpdatedElements.name
+      //  TutorUsingId.name = UpdatedElements.name
+      //  TutorUsingId.skils = UpdatedElements.skils
+      // TutorUsingId.experience = UpdatedElements.experience
         
-        TutorUsingId.skils = UpdatedElements.skils
-        
-        TutorUsingId.experience = UpdatedElements.experience
-        
-        //Return it after updated
         return TutorUsingId
     }
     
