@@ -1,6 +1,5 @@
 
-![workshop-2](https://github.com/GhaliaAlmuaddi/TuitionManagementSystem/assets/110771258/564e1f28-4107-4159-9035-37f0a8a0ddac) 
-## 👩🏻‍🏫Workshop API 
+## 👩🏻‍🏫👩🏻‍🎨Workshop API 
 The Workshop is handled by this vapor API. The API supports all primary CRUD operations: create, read, update, and delete.
 
 ## App Statment 
