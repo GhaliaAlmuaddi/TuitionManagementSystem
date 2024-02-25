@@ -16,7 +16,7 @@ struct WorkshopMigration: Migration {
         database.schema("Workshops")
             .id()
             .field("name", .string)
-            .field("date", .date)
+            .field("date", .string)
             .field("location", .string)
             .field("type", .string)
             .field("tutor_id", .uuid ,.required ,.references("TutorsT", "id")).create()

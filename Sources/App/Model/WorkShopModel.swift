@@ -25,7 +25,7 @@ final class WorkShopModel: Model,Content {
      var name: String
 
   @Field(key: "date")
-     var date: Date
+     var date: String
   
   @Field(key: "location")
      var location: String
@@ -46,7 +46,7 @@ final class WorkShopModel: Model,Content {
     init() { }
     
   
-    init(id : UUID , name : String , date : Date , location : String , type : String , tutor_id :  TutorModel.IDValue ) {
+    init(id : UUID , name : String , date : String , location : String , type : String , tutor_id :  TutorModel.IDValue ) {
         
         self.id = id
         self.name = name
