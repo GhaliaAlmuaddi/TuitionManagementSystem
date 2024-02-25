@@ -12,6 +12,13 @@ A system that provides a way for learners who want to enhance their hobbies and 
   ### Mac (To use Vapor on macOS, you will need Swift 5.2 or greater. Swift and all of its dependencies come bundled with Xcode.)
 download from [here](https://github.com/matiassingers/awesome-readme](https://docs.vapor.codes/install/macos/))
 
+  ### Linux (To use Vapor, you will need Swift 5.2 or greater. This can be installed using the toolchains available on Swift.org)
+
+download frome [here](https://docs.vapor.codes/install/linux/)
+
+- PostgreSQL database
+download frome [here](https://www.postgresql.org/download/)
+
 
 
 
