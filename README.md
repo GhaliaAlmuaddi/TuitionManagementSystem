@@ -4,11 +4,10 @@
 The Workshop is handled by this vapor API. The API supports all primary CRUD operations: create, read, update, and delete.
 ------
 
-##App Statment
+## App Statment \
 A system that provides a way for learners who want to enhance their hobbies and skills by facilitating teaching and learning opportunities.
 
 ## 📦Installation
-------
 - vapor is available on Mac,Linux.
 
   ### Mac (To use Vapor on macOS, you will need Swift 5.2 or greater. Swift and all of its dependencies come bundled with Xcode.)
