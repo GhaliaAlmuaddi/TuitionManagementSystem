@@ -21,7 +21,7 @@ struct Learner : RouteCollection {
         
         Learner.delete(":id" , use:delete)
         
-        Learner.get(":id" , use : getTutorByID)
+        Learner.get(":id" , use : getLearnerByID)
         
         
     
@@ -52,19 +52,23 @@ struct Learner : RouteCollection {
         }
     
        //Delete
-        func delete(req: Request) async throws -> HTTPStatus {
+        func delete(req: Request) async throws -> LearenrModel {
             guard let learner = try await LearenrModel.find(req.parameters.get("id"), on: req.db) else {
                 throw Abort(.notFound)
             }
             try await learner.delete(on: req.db)
-            return .ok
+            return learner
         }
-   
     
-    func getTutorByID (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "Get learner with ID \(id)"
+    
+ 
+    func getLearnerByID (req : Request) async throws -> LearenrModel {
+        guard let LearnerID = try await LearenrModel.find(req.parameters.get("id") , on : req.db) else { throw Abort(.notFound)}
+        return LearnerID
     }
+    
+    
+  
 }
 
 
