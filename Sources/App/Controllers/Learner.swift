@@ -51,22 +51,21 @@ struct Learner : RouteCollection {
             return learner
         }
     
-       //Delete
-        func delete(req: Request) async throws -> LearenrModel {
-            guard let learner = try await LearenrModel.find(req.parameters.get("id"), on: req.db) else {
-                throw Abort(.notFound)
-            }
-            try await learner.delete(on: req.db)
-            return learner
-        }
-    
-    
+    //Delete
+     func delete(req: Request) async throws -> LearenrModel {
+         guard let learner = try await LearenrModel.find(req.parameters.get("id"), on: req.db) else {
+             throw Abort(.notFound)
+         }
+         try await learner.delete(on: req.db)
+         return learner
+     }
  
-    func getLearnerByID (req : Request) async throws -> LearenrModel {
-        guard let LearnerID = try await LearenrModel.find(req.parameters.get("id") , on : req.db) else { throw Abort(.notFound)}
-        return LearnerID
-    }
-    
+ 
+
+ func getLearnerByID (req : Request) async throws -> LearenrModel {
+     guard let LearnerID = try await LearenrModel.find(req.parameters.get("id") , on : req.db) else { throw Abort(.notFound)}
+     return LearnerID
+ }
     
   
 }
