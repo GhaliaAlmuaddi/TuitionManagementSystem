@@ -1,5 +1,7 @@
 
-![workshop](https://github.com/GhaliaAlmuaddi/TuitionManagementSystem/assets/110771258/43f0b53e-e91c-419f-8c39-d4ba9047e2e9) ## Workshops API
+![workshop-2](https://github.com/GhaliaAlmuaddi/TuitionManagementSystem/assets/110771258/564e1f28-4107-4159-9035-37f0a8a0ddac)
+
+## Workshops API
 A system that provides a way for learners who want to enhance their hobbies and skills by facilitating teaching and learning opportunities.
 ---
 
