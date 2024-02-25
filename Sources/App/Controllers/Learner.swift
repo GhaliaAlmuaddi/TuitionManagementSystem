@@ -1,47 +1,80 @@
 //
 //  File 2.swift
-//  
+//
 //
 //  Created by Ghalia Mohammed Al Muaddi on 05/08/1445 AH.
 //
 
-import Foundation
 import Vapor
+import Fluent
+import FluentPostgresDriver
 
 struct Learner : RouteCollection {
     func boot(routes: Vapor.RoutesBuilder) throws {
-        let learner = routes.grouped("learner")
-        learner.get(use : index)
         
-        learner.post(use : create)
+        let Learner = routes.grouped("Learner")
+        Learner.get(use: index)
         
-        learner.put(":id" , use : update)
+        Learner.post(use: create)
         
-        learner.delete(":id" , use : delete)
+        Learner.put(":id" , use : update)
         
-        learner.get(":id" , use : getLearnerByID)
+        Learner.delete(":id" , use:delete)
+        
+        Learner.get(":id" , use : getTutorByID)
+        
+        
+    
     }
     
-    func index (req : Request) async throws -> String {
-        return "Get all learners"
-    }
     
-    func create (req : Request) async throws -> String {
-        return "create all learners"
-    }
+    func index(req: Request) async throws -> [LearenrModel] {
+            try await LearenrModel.query(on: req.db).all()
+        }
     
-    func update (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "update with \(id)"
-    }
+        func create(req: Request) async throws -> LearenrModel {
+            let Learner = try req.content.decode(LearenrModel.self)
+            try await Learner.save(on: req.db)
+            return Learner
+        }
     
-    func delete (req : Request) async throws -> String {
-        let id = req.parameters.get("id")!
-        return "delete with \(id)"
-    }
+     //Update
+        func update(req: Request) async throws -> LearenrModel {
+            guard let learner = try await LearenrModel.find(req.parameters.get("id"), on: req.db) else {
+                throw Abort(.notFound)
+            }
+            let updatedLearner = try req.content.decode(LearenrModel.self)
+            learner.name = updatedLearner.name
+            learner.age = updatedLearner.age
+            learner.hobbies = updatedLearner.hobbies
+            try await learner.save(on: req.db)
+            return learner
+        }
     
-    func getLearnerByID (req : Request) async throws -> String {
+       //Delete
+        func delete(req: Request) async throws -> HTTPStatus {
+            guard let learner = try await LearenrModel.find(req.parameters.get("id"), on: req.db) else {
+                throw Abort(.notFound)
+            }
+            try await learner.delete(on: req.db)
+            return .ok
+        }
+   
+    
+    func getTutorByID (req : Request) async throws -> String {
         let id = req.parameters.get("id")!
         return "Get learner with ID \(id)"
     }
 }
+
+
+
+
+////    func show(req: Request) async throws -> Learner {
+////        guard let learner = try await Learner.find(req.parameters.get("id"), on: req.db) else {
+////            throw Abort(.notFound)
+////        }
+////        return todo
+////    }
+
+
