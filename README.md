@@ -23,7 +23,7 @@ download frome [here](https://www.postgresql.org/download/)
 
 ## Table of content
 
-- [Features](#features)
+- [CRUD](#features)
   - [Create](#create)
   - [Delete](#delete)
   - [Update](#update)
