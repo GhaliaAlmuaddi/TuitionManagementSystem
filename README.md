@@ -45,6 +45,19 @@ download frome [here](https://www.postgresql.org/download/)
 -Can update the date of workshop
 
 
+### Relationship
+1-Tutor provides many workshops ( one to many ) 
+2-Many learner can enroll many workshops ( Many to Many ) 
+
+
+### features
+1. **Tutor Profile Management:** Tutors can create and manage their information like skills, experience.
+2. **Workshop Creation:** Tutors can create workshops with details like name, date, and location.
+3. ⁠ **learner Profile Management:** learner can create and manage their information like skills, experience.
+4. **Learner Enrollment:** Learners can enroll in workshops.
+4. **LearnerWorkshop :** Track enrollments through a many-to-many relationship between workshops and learners.
+
+
 ## DATABASE SCHEMA
 <img width="1169" alt="Screenshot 1445-08-15 at 1 17 26 PM" src="https://github.com/GhaliaAlmuaddi/TuitionManagementSystem/assets/110771258/c5e4fd84-82cc-4332-aabf-14a775dc085b">
 
