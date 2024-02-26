@@ -27,6 +27,7 @@ download frome [here](https://www.postgresql.org/download/)
   - [Create](#create)
   - [Delete](#delete)
   - [Update](#update)
+  -  [Get](#get)
  
 ---
 ## CRUD Operations
