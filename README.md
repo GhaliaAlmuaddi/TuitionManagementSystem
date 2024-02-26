@@ -29,7 +29,7 @@ download frome [here](https://www.postgresql.org/download/)
   - [Update](#update)
  
 ---
-## Features
+## CRUD Operations
 
 ### Create
 -Every Tutor provide many Workshops\
