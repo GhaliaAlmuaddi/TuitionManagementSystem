@@ -44,8 +44,7 @@ struct Workshop : RouteCollection {
         return NewWorkShop
  
     }
-    
-    
+
     func update (req : Request) async throws -> WorkShopModel {
 //         let id = req.parameters.get("id")!
 //                return "update with \(id)"

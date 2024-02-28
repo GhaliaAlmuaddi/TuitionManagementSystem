@@ -63,6 +63,4 @@ struct Tutor : RouteCollection {
         
       return TutorByID   
     }
-    
-    
 }
